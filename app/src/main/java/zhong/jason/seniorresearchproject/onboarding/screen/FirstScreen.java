@@ -3,6 +3,7 @@ package zhong.jason.seniorresearchproject.onboarding.screen;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
