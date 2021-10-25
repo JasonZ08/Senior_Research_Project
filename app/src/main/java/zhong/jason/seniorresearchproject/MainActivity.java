@@ -9,9 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.google.android.material.slider.Slider;
 
@@ -26,12 +32,17 @@ public class MainActivity extends AppCompatActivity {
 //Camera Icon or RJB
     ViewPager2 viewPager2;
     RecyclerView.Adapter myFSM;
+    ArrayList<Fragment> fragmentList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences sharedPreferences = getSharedPreferences("onBoard", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("FirstBoard", false);
+        editor.apply();
         viewPager2 = findViewById(R.id.viewPager);
-        ArrayList<Fragment> fragmentList = new ArrayList<Fragment>(Arrays.asList(
+        fragmentList = new ArrayList<Fragment>(Arrays.asList(
                 new FirstScreen(),
                 new SecondScreen(),
                 new ThirdScreen()));
@@ -41,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
         viewPager2.setAdapter(myFSM);
 
     }
+
+    public void skip(View view) {
+        Intent i = new Intent(MainActivity.this, MainPageActivity.class);
+        startActivity(i);
+        finish();
+    }
+
     private class myFragmentStateAdapter extends FragmentStateAdapter {
         ArrayList<Fragment> list;
 
@@ -60,5 +78,6 @@ public class MainActivity extends AppCompatActivity {
             return list.size();
         }
     }
+
 
 }
