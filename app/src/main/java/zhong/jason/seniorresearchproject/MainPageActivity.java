@@ -22,7 +22,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 public class MainPageActivity extends AppCompatActivity {
     ViewPager2 mViewPager2;
-    RecyclerView.Adapter fragmentStateAdapter;
+    RecyclerView.Adapter mMyfragmentStateAdapter;
     int NUM_ITEMS = 3;
 
     @Override
@@ -30,11 +30,11 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         //assign instance of viewpager2
-        mViewPager2 = findViewById(R.id.container);
+        mViewPager2 = findViewById(R.id.mp_container);
         //create an adapter for viewpager2
-        fragmentStateAdapter = new MyFragmentStateAdapter(this);
+        mMyfragmentStateAdapter = new MyFragmentStateAdapter(this);
         //set the adapter for the view
-        mViewPager2.setAdapter(fragmentStateAdapter);
+        mViewPager2.setAdapter(mMyfragmentStateAdapter);
     }
 
     private class MyFragmentStateAdapter extends FragmentStateAdapter {
