@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/horizontal_guideline"
-        app:layout_constraintGuide_percent=".90"
+        app:layout_constraintGuide_percent=".92"
         android:orientation="horizontal"
         />
     <!-- TODO: Update blank fragment layout -->

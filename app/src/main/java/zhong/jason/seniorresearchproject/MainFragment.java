@@ -18,11 +18,11 @@ import com.google.android.material.tabs.TabLayoutMediator;
 public class MainFragment extends Fragment {
     ViewPager2 mViewPager2;
     int position;
-    int[] icons = new int[]{R.drawable.home_tabicon, R.drawable.camera_tabicon, R.drawable.summary_tabicon};
     public static Fragment newInstance(ViewPager2 mViewPager2, int position){
         MainFragment fragment = new MainFragment();
         fragment.mViewPager2 = mViewPager2;
         fragment.position = position;
+
         return fragment;
     }
 
@@ -37,8 +37,20 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         // add to tabLayout
         TabLayout tabLayout = getActivity().findViewById(R.id.tab_layout);
-        new TabLayoutMediator(tabLayout, mViewPager2, (tab, position) -> tab.setIcon(icons[position])).attach();
+
+        View view1 = getLayoutInflater().inflate(R.layout.custom_view, null);
+        View view2 = getLayoutInflater().inflate(R.layout.custom_view, null);
+        View view3 = getLayoutInflater().inflate(R.layout.custom_view, null);
+        view3.findViewById(R.id.customView).setBackgroundResource(R.drawable.summary_tabicon);
+        view2.findViewById(R.id.customView).setBackgroundResource(R.drawable.camera_tabicon);
+        view1.findViewById(R.id.customView).setBackgroundResource(R.drawable.home_tabicon);
+        view1.setPadding(80, 30, 80, 30);
+        view2.setPadding(10, 10, 10, 10);
+        view3.setPadding(105, 45, 105, 45);
+        View [] views = new View[]{view1, view2, view3};
+        new TabLayoutMediator(tabLayout, mViewPager2, (tab, position) -> tab.setCustomView(views[position])).attach();
         TextView textView = view.findViewById(R.id.display);
         textView.setText("" + position);
+
     }
 }
