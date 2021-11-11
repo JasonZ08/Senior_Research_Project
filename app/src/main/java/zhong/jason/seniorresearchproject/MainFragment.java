@@ -15,13 +15,18 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.util.ArrayList;
+
 public class MainFragment extends Fragment {
     ViewPager2 mViewPager2;
     int position;
-    public static Fragment newInstance(ViewPager2 mViewPager2, int position){
+    ArrayList<Integer> mLayoutList;
+
+    public static Fragment newInstance(ViewPager2 mViewPager2, int position, ArrayList<Integer> arrayList){
         MainFragment fragment = new MainFragment();
         fragment.mViewPager2 = mViewPager2;
         fragment.position = position;
+        fragment.mLayoutList = arrayList;
 
         return fragment;
     }
@@ -29,7 +34,7 @@ public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.mp_fragment, container, false);
+        return inflater.inflate(mLayoutList.get(position), container, false);
     }
 
     @Override
