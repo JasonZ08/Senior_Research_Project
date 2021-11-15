@@ -1,14 +1,25 @@
 package zhong.jason.seniorresearchproject;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
@@ -23,43 +34,15 @@ import java.util.ArrayList;
 
 
 public class MainPageActivity extends AppCompatActivity {
-    ViewPager2 mViewPager2;
-    RecyclerView.Adapter mMyfragmentStateAdapter;
-    ArrayList<Integer> layoutList;
-    int NUM_ITEMS = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-        layoutList.add(R.layout.frag_home_page);
-        layoutList.add(R.layout.mp_fragment);
-        layoutList.add(R.layout.frag_summary_page);
-        //assign instance of viewpager2
-        mViewPager2 = findViewById(R.id.mp_container);
-        //create an adapter for viewpager2
-        mMyfragmentStateAdapter = new MyFragmentStateAdapter(this, layoutList);
-        //set the adapter for the view
-        mViewPager2.setAdapter(mMyfragmentStateAdapter);
     }
-
-    private class MyFragmentStateAdapter extends FragmentStateAdapter {
-        ArrayList<Integer> mLayoutList;
-
-        public MyFragmentStateAdapter(@NonNull FragmentActivity fragmentActivity, ArrayList<Integer> arrayList) {
-            super(fragmentActivity);
-            mLayoutList = arrayList;
-        }
-
-        @NonNull
-        @Override
-        public Fragment createFragment(int position) {
-            return MainFragment.newInstance(mViewPager2, position, mLayoutList);
-        }
-
-        @Override
-        public int getItemCount() {
-            return NUM_ITEMS;
-        }
+    public void camera(View view) {
+        Intent i = new Intent(MainPageActivity.this, Camera_Activity.class);
+        startActivity(i);
+        finish();
     }
 }
