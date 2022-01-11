@@ -30,6 +30,7 @@ public class Camera_Activity extends AppCompatActivity {
     Button button;
     Uri imageUri;
 
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {

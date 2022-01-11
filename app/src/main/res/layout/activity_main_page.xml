@@ -32,10 +32,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/long_quotes"
+        <FrameLayout
+            android:id="@+id/fragContainer"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
             />
         </ScrollView>
 
@@ -55,4 +55,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:onClick="camera"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="New Scan"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="30dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
