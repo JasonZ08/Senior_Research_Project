@@ -18,6 +18,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -41,17 +42,23 @@ import java.util.ArrayList;
 
 
 public class MainPageActivity extends AppCompatActivity {
-    ArrayList<StoringFragment> myStoringFragment;
+    ArrayList<StoringFragment> myStoringFragment = new ArrayList<StoringFragment>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         StoringFragment ex1 = new StoringFragment("test1", "test1", "test1");
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragContainer, ex1);
-        fragmentTransaction.commit();
-
+        myStoringFragment.add(ex1);
+        StoringFragment ex2 = new StoringFragment("test2", "test2", "test2");
+        myStoringFragment.add(ex2);
+        ListView listView = (ListView) findViewById(R.id.listview);
+        SFAdapter sfAdapter = new SFAdapter(this, myStoringFragment);
+        listView.setAdapter(sfAdapter);
+        myStoringFragment.add(ex2);
+        myStoringFragment.add(ex2);
+        myStoringFragment.add(ex2);
+        myStoringFragment.add(ex2);
+        myStoringFragment.add(ex2);
 
     }
     public void camera(View view) {

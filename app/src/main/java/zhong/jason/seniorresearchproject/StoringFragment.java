@@ -14,7 +14,7 @@ import android.widget.TextView;
  * Use the {@link StoringFragment#} factory method to
  * create an instance of this fragment.
  */
-public class StoringFragment extends Fragment {
+public class StoringFragment{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,24 +29,6 @@ public class StoringFragment extends Fragment {
         date = d;
         imageURL = iURL;
         // Required empty public constructor
-    }
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_storing, container, false);
-        TextView t = view.findViewById(R.id.title);
-        t.setText(title);
-        return view;
     }
 
     public String getTitle() {
